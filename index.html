@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Money Maker - Master the Profit with AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;900&family=Barlow:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-blue: #00f2ff;
+            --neon-green: #39ff14;
+            --dark-bg: #02040a;
+            --surface: #0a0f1e;
+            --text: #eef1f7;
+            --muted: #6a7a90;
+            --glow-blue: rgba(0, 242, 255, 0.4);
+            --glow-green: rgba(57, 255, 20, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ── HEADER ── */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(2, 4, 10, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 242, 255, 0.1);
+            padding: 15px 0;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        header.nav-hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .logo span { color: var(--neon-blue); }
+
+        .btn-header {
+            background: transparent;
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .btn-header:hover {
+            background: var(--neon-blue);
+            color: #000;
+            box-shadow: 0 0 20px var(--glow-blue);
+        }
+
+        /* ── HERO SECTION ── */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 40px 60px;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(0, 242, 255, 0.05) 0%, transparent 70%);
+        }
+
+        .hero-image-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .hero-image-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+            filter: grayscale(100%) brightness(0.5);
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 242, 255, 0.1);
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 span {
+            color: var(--neon-blue);
+            text-shadow: 0 0 30px var(--glow-blue);
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            color: var(--muted);
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-main {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--neon-blue);
+            color: #000;
+            padding: 20px 45px;
+            border-radius: 8px;
+            font-size: 1.3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: 0.3s;
+            box-shadow: 0 0 30px var(--glow-blue);
+        }
+
+        .cta-main:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 50px var(--glow-blue);
+        }
+
+        /* ── CAROUSEL ── */
+        .carousel-section {
+            padding: 100px 0;
+            background: #050810;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 0 20px;
+        }
+
+        .section-header h2 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .section-header h2 span { color: var(--neon-blue); }
+
+        .carousel-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 20px;
+            padding: 20px 40px;
+            animation: scroll 40s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-250px * 6 - 20px * 6)); }
+        }
+
+        .carousel-item {
+            flex: 0 0 300px;
+            height: 400px;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 242, 255, 0.1);
+            transition: 0.3s;
+        }
+
+        .carousel-item:hover {
+            border-color: var(--neon-blue);
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.6);
+            transition: 0.3s;
+        }
+
+        .carousel-item:hover img { filter: brightness(0.9); }
+
+        .carousel-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+        }
+
+        .carousel-info h3 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--neon-blue);
+        }
+
+        /* ── STATS ── */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: -50px auto 100px;
+            padding: 0 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stat-card {
+            background: var(--surface);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+        }
+
+        .stat-card:hover {
+            border-color: var(--neon-blue);
+            transform: translateY(-10px);
+        }
+
+        .stat-card h4 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--neon-blue);
+            line-height: 1;
+        }
+
+        .stat-card p {
+            color: var(--muted);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 60px 40px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            background: #010205;
+        }
+
+        .footer-logo {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover { color: var(--neon-blue); }
+
+        .copyright {
+            color: #444;
+            font-size: 0.8rem;
+        }
+
+        /* ── MOBILE ── */
+        @media (max-width: 768px) {
+            .nav-container { padding: 0 20px; }
+            .hero { padding-top: 100px; }
+            .hero h1 { font-size: 3rem; }
+            .section-header h2 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <nav class="nav-container">
+            <div class="logo">🚀 AI <span>MONEY MAKER</span></div>
+            <a href="https://pay.hotmart.com/U105233514Y?checkoutMode=10" class="btn-header">Instant Access</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-image-bg">
+            <img src="images/hero.png" alt="Hacker Background">
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">Elite System Activated</div>
+            <h1>The Secret to <span>$500/Day</span> with ChatGPT</h1>
+            <p>Stop leaving money on the table. Use artificial intelligence to hack the financial system and create an unstoppable income stream.</p>
+            <a href="https://pay.hotmart.com/U105233514Y?checkoutMode=10" class="cta-main">
+                Hack My Profits Now
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+        </div>
+    </section>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h4>5,000+</h4>
+            <p>Profiting Students</p>
+        </div>
+        <div class="stat-card">
+            <h4>7 Days</h4>
+            <p>Avg. Time to First Profit</p>
+        </div>
+        <div class="stat-card">
+            <h4>$2,000</h4>
+            <p>Avg. First Month Earnings</p>
+        </div>
+    </div>
+
+    <section class="carousel-section">
+        <div class="section-header">
+            <h2>System <span>Modules</span></h2>
+            <p>Everything you need to dominate the market with AI</p>
+        </div>
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <div class="carousel-item">
+                    <img src="images/module1.png" alt="Module 1">
+                    <div class="carousel-info"><h3>Elite Configuration</h3></div>
+                </div>
+                <div class="carousel-item">
+                    <img src="images/module2.png" alt="Module 2">
+                    <div class="carousel-info"><h3>Algorithm Cracking</h3></div>
+                </div>
+                <div class="carousel-item">
+                    <img src="images/module3.png" alt="Module 3">
+                    <div class="carousel-info"><h3>Digital Wallet 2.0</h3></div>
+                </div>
+                <div class="carousel-item">
+                    <img src="images/module4.png" alt="Module 4">
+                    <div class="carousel-info"><h3>Global Connection</h3></div>
+                </div>
+                <div class="carousel-item">
+                    <img src="images/module5.png" alt="Module 5">
+                    <div class="carousel-info"><h3>Golden Scaling</h3></div>
+                </div>
+                <div class="carousel-item">
+                    <img src="images/module6.png" alt="Module 6">
+                    <div class="carousel-info"><h3>Hacker Infrastructure</h3></div>
+                </div>
+                <!-- Duplicates for infinite scroll -->
+                <div class="carousel-item">
+                    <img src="images/module1.png" alt="Module 1">
+                    <div class="carousel-info"><h3>Elite Configuration</h3></div>
+                </div>
+                <div class="carousel-item">
+                    <img src="images/module2.png" alt="Module 2">
+                    <div class="carousel-info"><h3>Algorithm Cracking</h3></div>
+                </div>
+                <div class="carousel-item">
+                    <img src="images/module3.png" alt="Module 3">
+                    <div class="carousel-info"><h3>Digital Wallet 2.0</h3></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero" style="min-height: 60vh; background: #02040a;">
+        <div class="hero-content">
+            <h2 style="font-family: 'Barlow Condensed', sans-serif; font-size: 3rem; font-weight: 900; margin-bottom: 20px; text-transform: uppercase;">Opportunity is <span>Expiring</span></h2>
+            <p>The system won't stay open for long. Secure your spot in the elite group now.</p>
+            <a href="https://pay.hotmart.com/U105233514Y?checkoutMode=10" class="cta-main">
+                Secure My Lifetime Access
+            </a>
+            <p style="margin-top: 20px; color: var(--neon-green); font-weight: 700;">✓ 30-Day Unconditional Guarantee</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">🚀 AI <span>MONEY MAKER</span></div>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Use</a>
+            <a href="#">Support</a>
+        </div>
+        <p class="copyright">© 2026 AI Money Maker. All rights reserved. This site is not affiliated with Facebook or Google.</p>
+    </footer>
+
+    <script>
+        let lastScrollTop = 0;
+        const header = document.getElementById('main-header');
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Scroll down
+                header.classList.add('nav-hidden');
+            } else {
+                // Scroll up
+                header.classList.remove('nav-hidden');
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }, false);
+    </script>
+</body>
+</html>
